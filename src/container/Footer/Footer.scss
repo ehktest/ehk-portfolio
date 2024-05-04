@@ -1,0 +1,227 @@
+@import "../../sass/mixins.scss";
+
+$footerEmailCardBgColor: var(--footer-emailCardBgColor);
+$footerEmailCardShadow: var(--footer-emailCardShadow);
+$footerPhoneCardBgColor: var(--footer-phoneCardBgColor);
+$footerPhoneCardShadow: var(--footer-phoneCardShadow);
+$formLabelRegularColor: var(--form-labelRegularColor);
+$formLabelFocusColor: var(--form-labelFocusColor);
+$formLabelErrorColor: var(--form-labelErrorColor);
+$formInputTextColor: var(--form-inputTextColor);
+$formTaTextColor: var(--form-taTextColor);
+$formInputTaShadow: var(--form-inputTaShadow);
+$formInputTaRegularBorderColor: var(--form-inputTaRegularBorderColor);
+$formInputTaFocusBorderColor: var(--form-inputTaFocusBorderColor);
+$formInputTaErrorBorderColor: var(--form-inputTaErrorBorderColor);
+$formInputTaHoverBorderColor: var(--form-inputTaHoverBorderColor);
+$formInputTaHelperTextColor: var(--form-inputTaHelperTextColor);
+$formSubmitButtonBgColor: var(--form-submitButtonBgColor);
+$formSubmitButtonTextColor: var(--form-submitButtonTextColor);
+$formSubmitButtonHoverColor: var(--form-submitButtonHoverColor);
+
+.app__footer {
+  flex: 1;
+  width: 100%;
+  flex-direction: column;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.app__footer-cards {
+  width: 60%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0 2rem;
+
+  .app__footer-card {
+    min-width: 290px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    margin: 0.5rem 0;
+    padding: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: $footerEmailCardBgColor;
+
+    transition: all 0.3s ease-in-out;
+
+    img {
+      width: 40px;
+      height: 40px;
+      margin: 0 0.7rem;
+    }
+
+    p {
+      font-weight: 500;
+    }
+    a {
+      text-decoration: none;
+      font-weight: 500;
+    }
+    &:hover {
+      box-shadow: 0 0 10px $footerEmailCardShadow;
+    }
+
+    @media screen and (max-width: 450px) {
+      width: 100%;
+    }
+
+    &:last-child {
+      background-color: $footerPhoneCardBgColor;
+      &:hover {
+        box-shadow: 0 0 10px $footerPhoneCardShadow;
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.app__footer-form {
+  width: 60%;
+  flex-direction: column;
+  margin: 0 2rem;
+
+  div {
+    width: 100%;
+
+    margin: 0.75rem 0;
+    border-radius: 10px;
+
+    transition: all 0.3s ease-in-out;
+
+    // - FORMIK MUI FORM COMPONENT STILLERI
+    .MuiFormControl-root.MuiTextField-root {
+      margin: 0;
+      /* Varsayılan hali için label stilleri */
+      .MuiFormLabel-root.MuiInputLabel-root {
+        font-family: var(--font-base);
+        color: $formLabelRegularColor;
+        // focus durumunda label
+        &.Mui-focused {
+          color: $formLabelFocusColor;
+        }
+        // Hata olduğunda label
+        &.Mui-error {
+          color: $formLabelErrorColor;
+        }
+        @media screen and (min-width: 2000px) {
+          font-size: 1.2rem;
+        }
+      }
+      /* Varsayılan hali için input ve textarea ortak stilleri */
+      input.MuiInputBase-input.MuiOutlinedInput-input,
+      textarea.MuiInputBase-input.MuiOutlinedInput-input {
+        width: 100%;
+        font-family: var(--font-base);
+        outline: none;
+        cursor: pointer;
+        @media screen and (min-width: 2000px) {
+          font-size: 2rem;
+          padding: 1rem !important;
+          line-height: 1.5;
+        }
+      }
+      /* Varsayılan hali için input stilleri */
+      input.MuiInputBase-input.MuiOutlinedInput-input {
+        color: $formInputTextColor;
+        padding: 0.5rem 1rem;
+      }
+      /* Varsayılan hali için textarea stilleri */
+      textarea.MuiInputBase-input.MuiOutlinedInput-input {
+        color: $formTaTextColor;
+      }
+      /* Input icin hover boxshadow */
+      div.MuiInputBase-root.MuiOutlinedInput-root:has(
+          input.MuiInputBase-input.MuiOutlinedInput-input
+        ) {
+        &:hover {
+          box-shadow: $formInputTaShadow;
+        }
+      }
+      /* Textarea icin hover boxshadow */
+      div.MuiInputBase-root.MuiOutlinedInput-root:has(
+          textarea.MuiInputBase-input.MuiOutlinedInput-input
+        ) {
+        &:hover {
+          box-shadow: $formInputTaShadow;
+        }
+      }
+      // Input/textarea alanlari icin border stilleri:
+      /* Varsayılan hali için border rengi */
+      .MuiOutlinedInput-notchedOutline {
+        border-color: $formInputTaRegularBorderColor;
+        border-width: 2px;
+        // border-radius: 0.7rem;
+      }
+      /* Odaklandığında border rengi */
+      .MuiOutlinedInput-root.Mui-focused {
+        .MuiOutlinedInput-notchedOutline {
+          border-color: $formInputTaFocusBorderColor;
+        }
+      }
+      /* Hata olduğunda border rengi */
+      .MuiOutlinedInput-root.Mui-error {
+        .MuiOutlinedInput-notchedOutline {
+          border-color: $formInputTaErrorBorderColor;
+        }
+      }
+      /* Hoverda border rengi */
+      .MuiOutlinedInput-root {
+        &:hover {
+          .MuiOutlinedInput-notchedOutline {
+            border-color: $formInputTaHoverBorderColor;
+          }
+        }
+      }
+      // Error message stilleri
+      p.MuiFormHelperText-root.Mui-error {
+        @include globalPTextStyles;
+        color: $formInputTaHelperTextColor;
+      }
+    }
+  }
+
+  button {
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    border: none;
+    background-color: $formSubmitButtonBgColor;
+
+    font-weight: 500;
+    color: $formSubmitButtonTextColor;
+    outline: none;
+    margin: 0.5rem 0 0 0;
+    font-family: var(--font-base);
+
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $formSubmitButtonHoverColor;
+    }
+
+    &:disabled {
+      filter: brightness(80%);
+      cursor: not-allowed !important;
+
+      &:hover {
+        background-color: $formSubmitButtonBgColor;
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    margin: 1rem 0;
+  }
+}

@@ -1,0 +1,307 @@
+$base-ZIndex: var(--navbar-ZIndex);
+$logo-width: var(--navbar-logo-width);
+$line-width: var(--navbar-letter-line-width);
+$line-draw-speed: var(--navbar-letter-line-draw-speed);
+$navbar-padding-vertical: var(--navbar-padding-vertical);
+$navbar-padding-horizontal: var(--navbar-padding-horizontal);
+$navbar-bgColor: var(--navbar-bgColor);
+$navbar-borderColor: var(--navbar-borderColor);
+$navbar-linkColor: var(--navbar-linkColor);
+$navbar-linkHoverColor: var(--navbar-linkHoverColor);
+$navbar-scrollLinkBgColor: var(--navbar-scrollLinkBgColor);
+$navbar-scrollLinkShadow: var(--navbar-scrollLinkShadow);
+
+.app__navbar {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: $navbar-padding-vertical $navbar-padding-horizontal;
+  background-color: $navbar-bgColor;
+  backdrop-filter: blur(2rem);
+  -webkit-backdrop-filter: blur(2rem);
+  border: 1px solid $navbar-borderColor;
+  position: fixed;
+  z-index: $base-ZIndex;
+
+  &--logo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+
+    img {
+      width: $logo-width;
+      height: $logo-width;
+    }
+
+    & .app__navbar-letter {
+      position: relative;
+      width: calc(#{$logo-width} / 2 + ((#{$logo-width} / 2) * 1.414));
+      height: $logo-width;
+      overflow: hidden;
+
+      &__container {
+        animation: drawLetter linear;
+
+        & .app__navbar-letter__line {
+          background-color: #51515c;
+
+          &--vertical {
+            background-color: inherit;
+            height: 0;
+            position: absolute;
+            width: $line-width;
+            animation: drawVertical $line-draw-speed ease forwards;
+          }
+
+          &--horizontal {
+            background-color: inherit;
+            z-index: $base-ZIndex;
+            width: 0;
+            top: calc(#{$logo-width} / 2 - (#{$line-width} / 2));
+            left: 0;
+            height: $line-width;
+            position: absolute;
+            animation: drawHorizontal $line-draw-speed ease $line-draw-speed
+              forwards;
+          }
+
+          &--k-vertical {
+            background-color: #6db034;
+            z-index: $base-ZIndex;
+            position: absolute;
+            left: calc(#{$logo-width} / 2);
+            height: 0;
+            width: $line-width;
+            animation: drawVertical $line-draw-speed ease
+              calc(#{$line-draw-speed} * 2) forwards;
+          }
+
+          &--k-up {
+            background-color: aqua;
+            top: calc(#{$logo-width} / 2 - (#{$line-width} / 2));
+            left: calc(#{$logo-width} / 2 + (#{$line-width} / 2));
+            width: 0;
+            height: $line-width;
+            position: absolute;
+            transform: rotate(-45deg);
+            transform-origin: left bottom;
+            animation: drawDiagonal $line-draw-speed ease
+              calc(#{$line-draw-speed} * 3) forwards;
+          }
+
+          &--k-down {
+            background-color: aqua;
+            top: calc(#{$logo-width} / 2 - (#{$line-width} / 2));
+            left: calc(#{$logo-width} / 2 + (#{$line-width} / 2));
+            width: 0;
+            height: $line-width;
+            position: absolute;
+            transform: rotate(45deg);
+            transform-origin: left top;
+            animation: drawDiagonal $line-draw-speed ease
+              calc(#{$line-draw-speed} * 4) forwards;
+          }
+        }
+      }
+    }
+  }
+
+  &--links {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    z-index: calc(#{$base-ZIndex} + 1);
+
+    list-style: none;
+
+    li {
+      margin: 0 1rem;
+      // cursor: pointer;
+      flex-direction: column;
+
+      div {
+        width: 0.4rem;
+        height: 0.4rem;
+        background: transparent;
+        border-radius: 50%;
+
+        margin-bottom: 0.4rem;
+      }
+
+      a {
+        color: $navbar-linkColor;
+        text-decoration: none;
+        flex-direction: column;
+
+        text-transform: uppercase;
+        font-weight: 500;
+
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+          color: $navbar-linkHoverColor;
+        }
+
+        &.scrolled {
+          box-shadow: 0 0 20px $navbar-scrollLinkShadow;
+          background-color: $navbar-scrollLinkBgColor;
+        }
+      }
+
+      &:hover {
+        div {
+          background-color: $navbar-linkHoverColor;
+        }
+      }
+    }
+
+    @media only screen and (max-width: 900px) {
+      display: none;
+    }
+  }
+
+  &-menu {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--secondary-color);
+
+    svg {
+      width: 70%;
+      height: 70%;
+      color: #000;
+    }
+
+    div {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      z-index: calc(#{$base-ZIndex} + 2);
+
+      padding: 1rem;
+
+      width: 20%;
+      min-width: 150px;
+      height: 100vh;
+
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      flex-direction: column;
+
+      background: url("../../assets/bgWhite.png");
+      background-color: var(--white-color);
+      background-size: cover;
+      background-repeat: repeat;
+
+      /* top box shadow */
+      box-shadow: 0px 0px 20px rgba(168, 168, 168, 0.15);
+
+      svg {
+        width: 35px;
+        height: 35px;
+        color: #000;
+        margin: 0.5rem 1rem;
+      }
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-direction: column;
+
+        li {
+          margin: 1rem;
+
+          a {
+            color: #000;
+            text-decoration: none;
+            font-size: 1rem;
+            text-transform: uppercase;
+            font-weight: 500;
+
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+              color: red;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes drawVertical {
+  to {
+    height: $logo-width;
+  }
+}
+
+@keyframes drawHorizontal {
+  to {
+    width: calc(#{$logo-width} / 2);
+  }
+}
+
+@keyframes drawDiagonal {
+  to {
+    width: calc(
+      (#{$logo-width} / 2) * 1.6
+    ); // app__navbar-letter overflow: hidden
+  }
+}
+
+@keyframes drawLetter {
+  0%,
+  100% {
+    /* Start and end positions */
+  }
+  20% {
+    /* Draw left line of letter H */
+    .app__navbar-letter__line--vertical {
+      height: $logo-width;
+    }
+  }
+  40% {
+    /* Draw hozirontal line of letter H */
+    .app__navbar-letter__line--horizontal {
+      width: calc(#{$logo-width} / 2);
+    }
+  }
+  60% {
+    /* Draw common vertical line of letters H and K */
+    .app__navbar-letter__line--k-vertical {
+      height: $logo-width;
+    }
+  }
+  80% {
+    /* Draw upper diagonal line of letter K */
+    .app__navbar-letter__line--k-up {
+      width: calc((#{$logo-width} / 2) * 1.414);
+    }
+  }
+  100% {
+    /* Draw lower diagonal line of letter K */
+    .app__navbar-letter__line--k-down {
+      width: calc((#{$logo-width} / 2) * 1.414);
+    }
+  }
+}

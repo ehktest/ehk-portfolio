@@ -1,0 +1,267 @@
+@import "../../sass/mixins.scss";
+
+$base-ZIndex: var(--navbar-ZIndex);
+$customCursorBreakpoint: var(--cursor-breakpoint);
+$customCursorBreakpointManualValue: 1400px;
+$btnGeneralBgColor: var(--btn-generalBgColor);
+$btnActiveBgColor: var(--btn-activeBgColor);
+$btnTextColor: var(--btn-textColor);
+$workCardBgColor: var(--work-cardBgColor);
+$workCardTextColor: var(--work-cardTextColor);
+$workCardShadow: var(--work-cardShadow);
+$paginationTextColor: var(--pagination-textColor);
+$paginationRowsTextColor: var(--pagination-rowsTextColor);
+$paginationButtonBgHoverColor: var(--pagination-buttonBgHoverColor);
+
+.app__works {
+  flex: 1;
+  width: 100%;
+  flex-direction: column;
+}
+
+.app__work-filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+
+  margin: 0.5rem 0;
+
+  &-item {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background-color: $btnGeneralBgColor;
+    color: $btnTextColor !important;
+    font-weight: 800;
+
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0.5rem;
+
+    &:hover {
+      // background-color: var(--secondary-color);
+      // color: #fff;
+      filter: drop-shadow(0 0 3px red) brightness(80%);
+    }
+
+    @media screen and (min-width: 2000px) {
+      padding: 1rem 2rem;
+      border-radius: 0.85rem;
+    }
+  }
+
+  .item-active {
+    background-color: $btnActiveBgColor;
+    color: $btnTextColor;
+  }
+}
+
+.app__work-portfolio {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  .app__work-item {
+    width: 250px;
+    height: 300px;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    margin: 2rem;
+    margin-bottom: 1rem;
+    margin-top: 0;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: $workCardBgColor;
+    color: $workCardTextColor;
+
+    // cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 0 25px $workCardShadow;
+    }
+
+    @media screen and (min-width: 2000px) {
+      width: 470px;
+      padding: 1.25rem;
+      border-radius: 0.75rem;
+      height: 640px;
+    }
+
+    @media screen and (max-width: 300px) {
+      width: 100%;
+      margin: 1rem;
+    }
+    .app__work-content {
+      .app__work-tag {
+        .p--text {
+          font-size: 0.6rem;
+        }
+      }
+    }
+  }
+}
+
+.app__work-img {
+  width: 100%;
+  height: 150px;
+
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 0.5rem;
+    object-fit: cover;
+  }
+
+  @media screen and (min-width: 2000px) {
+    height: 350px;
+  }
+}
+
+.app__work-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  border-radius: 0.5rem;
+  opacity: 0;
+  transition: all 0.3s ease;
+  flex-wrap: wrap;
+
+  div {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+
+    margin: 1rem;
+    font-family: var(--font-base);
+    font-weight: 800;
+    // cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      z-index: calc(#{$base-ZIndex} - 1);
+    }
+
+    svg {
+      width: 50%;
+      height: 50%;
+      color: var(--white-color);
+    }
+
+    // @media screen and (min-width: 1600px) {
+    //   width: 60px;
+    //   height: 60px;
+    // }
+
+    @media screen and (min-width: 2000px) {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  a {
+    @include cursorNone;
+
+    @media screen and (max-width: $customCursorBreakpointManualValue) {
+      @include cursorPointer;
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    opacity: 1 !important;
+  }
+}
+
+.app__work-content {
+  padding: 0.5rem;
+  width: 100%;
+  position: relative;
+  flex-direction: column;
+
+  h4 {
+    margin-top: 1rem;
+    line-height: 1.5;
+
+    @media screen and (min-width: 2000px) {
+      margin-top: 3rem;
+    }
+  }
+
+  p {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin: auto;
+    word-break: break-all;
+    white-space: break-spaces;
+  }
+
+  .app__work-tag {
+    position: absolute;
+
+    padding: 0.5rem;
+    border-radius: 10px;
+    background-color: $workCardBgColor;
+    top: -25px;
+
+    p {
+      @media screen and (min-width: 2000px) {
+        font-size: 1em !important;
+      }
+    }
+  }
+}
+
+div.pagination__container {
+  div.MuiTablePagination-root {
+    div.MuiToolbar-root {
+      p.MuiTablePagination-displayedRows {
+        color: $paginationRowsTextColor !important;
+        @media screen and (min-width: 2000px) {
+          font-size: 2rem;
+        }
+      }
+      div.MuiTablePagination-actions {
+        button.MuiButtonBase-root {
+          &:hover {
+            background-color: $paginationButtonBgHoverColor !important;
+          }
+          @media screen and (min-width: 2000px) {
+            width: 80px;
+            height: 80px;
+          }
+        }
+        button.MuiButtonBase-root.Mui-disabled {
+          opacity: 0.4 !important;
+          @media screen and (min-width: 2000px) {
+            width: 80px;
+            height: 80px;
+          }
+        }
+        svg.MuiSvgIcon-root {
+          color: $paginationTextColor !important;
+          @media screen and (min-width: 2000px) {
+            width: 64px;
+            height: 64px;
+          }
+        }
+      }
+    }
+  }
+}

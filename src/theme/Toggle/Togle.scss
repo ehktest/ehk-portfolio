@@ -1,0 +1,30 @@
+$base-ZIndex: var(--navbar-ZIndex);
+
+.t {
+  width: 50px;
+  height: 25px;
+  border-radius: 13px;
+  border: 1px solid #999;
+  background-color: white;
+  position: relative;
+  z-index: calc(#{$base-ZIndex} + 1);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  transition: background-color 0.2s ease-in;
+}
+
+.t-icon {
+  width: 15px;
+  height: 15px;
+}
+
+.t-button {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #999;
+  position: absolute;
+  cursor: pointer;
+  transition: right 0.2s ease-in;
+}

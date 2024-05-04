@@ -1,0 +1,211 @@
+$skillsBadgeBgColor: var(--skills-badgeBgColor);
+$skillsBadgeShadowColor: var(--skills-badgeShadow);
+$skillsTooltipTextColor: var(--skills-tooltipTextColor);
+$skillsTooltipBgColor: var(--skills-tooltipBgColor);
+$skillsTooltipShadowColor: var(--skills-tooltipShadow);
+$skillsYearColor: var(--skills-yearColor);
+$paginationTextColor: var(--pagination-textColor);
+$paginationRowsTextColor: var(--pagination-rowsTextColor);
+$paginationButtonBgHoverColor: var(--pagination-buttonBgHoverColor);
+
+.app__skills {
+  flex: 1;
+  width: 100%;
+  flex-direction: column;
+}
+
+.app__skills-container {
+  width: 80%;
+  margin-top: 1rem;
+
+  display: flex;
+  flex-direction: row;
+
+  @media screen and (max-width: 900px) {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .app__skills-list {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    margin-right: 5rem;
+
+    @media screen and (max-width: 900px) {
+      margin-right: 0;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .app__skills-item {
+      flex-direction: column;
+      text-align: center;
+
+      margin: 1rem;
+
+      transition: all 0.3s ease-in-out;
+
+      div {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: $skillsBadgeBgColor;
+
+        img {
+          width: 60%;
+          height: 60%;
+        }
+
+        &:hover {
+          box-shadow: 0 0 25px $skillsBadgeShadowColor;
+        }
+
+        @media screen and (min-width: 2000px) {
+          width: 90px;
+          height: 90px;
+        }
+
+        @media screen and (max-width: 450px) {
+          width: 40px;
+          height: 40px;
+        }
+      }
+
+      p {
+        font-weight: 500;
+        margin-top: 0.5rem;
+      }
+
+      @media screen and (min-width: 2000px) {
+        margin: 1rem 2rem;
+
+        p {
+          margin-top: 1rem;
+        }
+      }
+    }
+  }
+
+  .app__skills-exp {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+
+    @media screen and (max-width: 900px) {
+      margin-top: 2rem;
+    }
+
+    &-item {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: flex-start;
+      // margin: 0.5rem 0;
+
+      &:first-of-type {
+        margin-top: 1rem;
+      }
+
+      .app__skills-exp-works {
+        flex: 1;
+
+        .app__skills-exp-work {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: flex-start;
+          margin-bottom: 0.5rem;
+          cursor: pointer;
+
+          h4 {
+            font-weight: 500;
+          }
+
+          p {
+            font-weight: 400;
+            color: var(--gray-color);
+            margin-top: 5px;
+          }
+        }
+
+        .skills-tooltip {
+          max-width: 300px !important;
+          background-color: $skillsTooltipBgColor !important;
+          box-shadow: 0 0 25px $skillsTooltipShadowColor !important;
+          border-radius: 5px !important;
+          padding: 1rem !important;
+          color: $skillsTooltipTextColor !important;
+          line-height: 1.5 !important;
+          opacity: 1 !important;
+
+          @media screen and (min-width: 2000px) {
+            font-size: 1.75rem !important;
+            max-width: 500px !important;
+            line-height: 2 !important;
+          }
+        }
+      }
+
+      .app__skills-exp-year {
+        margin-right: 3rem;
+
+        p {
+          font-weight: 800;
+          color: $skillsYearColor;
+        }
+
+        @media screen and (max-width: 450px) {
+          margin-right: 1rem;
+        }
+      }
+    }
+  }
+}
+
+div.pagination__container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  div.MuiTablePagination-root {
+    div.MuiToolbar-root {
+      p.MuiTablePagination-displayedRows {
+        color: $paginationRowsTextColor !important;
+        @media screen and (min-width: 2000px) {
+          font-size: 2rem;
+        }
+      }
+      div.MuiTablePagination-actions {
+        button.MuiButtonBase-root {
+          &:hover {
+            background-color: $paginationButtonBgHoverColor !important;
+          }
+          @media screen and (min-width: 2000px) {
+            width: 80px;
+            height: 80px;
+          }
+        }
+        button.MuiButtonBase-root.Mui-disabled {
+          opacity: 0.4 !important;
+          @media screen and (min-width: 2000px) {
+            width: 80px;
+            height: 80px;
+          }
+        }
+        svg.MuiSvgIcon-root {
+          color: $paginationTextColor !important;
+          @media screen and (min-width: 2000px) {
+            width: 64px;
+            height: 64px;
+          }
+        }
+      }
+    }
+  }
+}

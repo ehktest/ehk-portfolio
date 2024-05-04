@@ -1,0 +1,5 @@
+$navDotBgColor: var(--navDot-BgColor);
+
+.active-navDot {
+  background-color: $navDotBgColor !important;
+}

@@ -1,0 +1,91 @@
+@import "../../sass/mixins.scss";
+$cursorColor: var(--cursor-color);
+
+body {
+  scrollbar-width: none; /* Firefox 64 ve üstü */
+  overflow: -moz-scrollbars-none; /* Firefox dahil diğer Mozilla tarayıcılar */
+  &::-webkit-scrollbar {
+    display: none; // Kaydırma çubuklarını gizler, ancak içerik taşarsa kaydırmaya izin verir
+  }
+
+  .app__cursor-zone {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  #cursorWrapper {
+    position: fixed;
+    z-index: 100;
+    width: 15px;
+    height: 15px;
+    pointer-events: none;
+    filter: drop-shadow(0 0 2px $cursorColor) drop-shadow(0 0 15px $cursorColor)
+      drop-shadow(0 0 35px $cursorColor) hue-rotate(60deg);
+    overflow: hidden;
+
+    #cursor {
+      width: 100%;
+      height: 100%;
+
+      border-top: 3px solid $cursorColor;
+      border-left: 3px solid $cursorColor;
+      transform-origin: top;
+      &:before {
+        content: "";
+        position: absolute;
+        left: -2.5px;
+        top: -1.5px;
+        width: 3px;
+        height: 200px;
+        background-color: $cursorColor;
+        transform-origin: top;
+        transform: rotate(315deg);
+      }
+
+      @media only screen and (min-width: 2000px) {
+        border-top: 5px solid $cursorColor;
+        border-left: 5px solid $cursorColor;
+
+        &:before {
+          width: 5px;
+        }
+      }
+    }
+
+    @media only screen and (min-width: 2000px) {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  .cursorElement {
+    position: absolute;
+    z-index: 100;
+    // background-color: $cursorColor;
+    color: $cursorColor;
+    font-size: 1rem;
+    opacity: 0.3;
+    pointer-events: none;
+    width: 10px;
+    height: 10px;
+    transition: 1s;
+    filter: drop-shadow(0 0 2px $cursorColor) drop-shadow(0 0 15px $cursorColor)
+      hue-rotate(60deg);
+
+    @media only screen and (min-width: 2000px) {
+      font-size: 2rem;
+    }
+  }
+
+  .pointer-cursor {
+    @include cursorPointer;
+    // cursor: pointer !important;
+  }
+
+  &.cursor-none {
+    @include cursorNone;
+    // cursor: none !important;
+  }
+}

@@ -1,0 +1,217 @@
+/* @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap"); */
+
+/* :root seçici, CSS özel özelliklerini (değişkenleri) tanımlamak için kullanılır, böylece aynı değerleri tekrar tekrar yazmaktan kaçınılabilir. */
+:root {
+  /* --font-base: "DM Sans", sans-serif; */
+  --font-base: "Fira Code", "Inconsolata", monospace, "Roboto", sans-serif;
+
+  --primary-color: #031d3d;
+  --secondary-color: #313bac;
+  --black-color: #030303;
+  --lightGray-color: #e4e4e4;
+  --gray-colorLight: #6b7688;
+  --gray-color: #6b7688;
+  --gray-colorDark: #919fb8;
+  --brown-color: #46364a;
+  --white-color: #ffffff;
+  /* + TEXT */
+  --text-generalLight: #000;
+  --text-general: #000;
+  --text-generalDark: #fff;
+  --text-headerLight: #000;
+  --text-header: #000;
+  --text-headerDark: #542b2b;
+  --text-importantLight: rgb(174, 73, 73);
+  --text-important: rgb(174, 73, 73);
+  --text-importantDark: red;
+  /* + APP */
+  --app-BgColorLight: #edf2f8;
+  --app-BgColor: #edf2f8;
+  --app-BgColorDark: #1b2f46;
+  --app-evensPageBgColorLight: #edf2f8;
+  --app-evensPageBgColor: #edf2f8;
+  --app-evensPageBgColorDark: #1b2f46;
+  --app-oddsPageBgColorLight: #dde4eb;
+  --app-oddsPageBgColor: #dde4eb;
+  --app-oddsPageBgColorDark: #1b293b;
+  /* + CURSOR */
+  /* --cursor-colorLight: #0f0; */
+  --cursor-colorLight: rgb(67, 78, 0);
+  --cursor-color: rgb(67, 78, 0);
+  --cursor-colorDark: #dbccb9;
+  --cursor-breakpoint: 1400px;
+  /* + NAVBAR */
+  --navbar-ZIndex: 2;
+  --navbar-bgColorLight: rgba(255, 255, 255, 0.25);
+  --navbar-bgColor: rgba(255, 255, 255, 0.25);
+  --navbar-bgColorDark: rgba(0, 0, 0, 0.4);
+  --navbar-borderColor: rgba(255, 255, 255, 0.18);
+  --navbar-linkColorLight: #39e03f;
+  --navbar-linkColor: #39e03f;
+  --navbar-linkColorDark: #e1e4e7;
+  --navbar-linkHoverColorLight: #00b7ff; /* Hover => Navbar Link*/
+  --navbar-linkHoverColor: #00b7ff; /* Hover => Navbar Link*/
+  --navbar-linkHoverColorDark: #47ff72; /* Hover => Navbar Link*/
+  --navbar-hamburgerBgColorLight: #ededed;
+  --navbar-hamburgerBgColor: #ededed;
+  --navbar-hamburgerBgColorDark: #8e8e8e;
+  --navbar-hamburgerLinkColorLight: #232323;
+  --navbar-hamburgerLinkColor: #232323;
+  --navbar-hamburgerLinkColorDark: #f9f9f9;
+  --navbar-hamburgerLinkHoverColor: #fa3917; /* Hover => Navbar Hamburger Link */
+  --navbar-hamburgerAnimationDuration: 0.6s;
+  --navbar-padding-vertical: 1rem;
+  --navbar-padding-horizontal: 2rem;
+  --navbar-logo-width: 2.5rem;
+  --navbar-letter-line-width: calc(var(--navbar-logo-width) / 6);
+  --navbar-letter-line-draw-speed: 0.2s;
+  --navbar-scrollLinkBgColorLight: #0000008e;
+  --navbar-scrollLinkBgColor: #0000008e;
+  --navbar-scrollLinkBgColorDark: #ee313159;
+  --navbar-scrollLinkShadowLight: rgba(120, 1, 1, 0.388);
+  --navbar-scrollLinkShadow: rgba(120, 1, 1, 0.388);
+  --navbar-scrollLinkShadowDark: rgba(1, 120, 19, 0.388);
+  /* + HEADER */
+  --header-BadgeShadowLight: rgba(0, 0, 0, 0.1);
+  --header-BadgeShadow: rgba(0, 0, 0, 0.1);
+  --header-BadgeShadowDark: rgba(204, 204, 204, 0.5);
+  /* + WORK */
+  --work-cardBgColorLight: #cccccc;
+  --work-cardBgColor: #cccccc;
+  --work-cardBgColorDark: #7e7e7e;
+  --work-cardTextColorLight: #fff;
+  --work-cardTextColor: #fff;
+  --work-cardTextColorDark: #000;
+  --work-cardShadowLight: rgba(0, 0, 0, 0.1);
+  --work-cardShadow: rgba(0, 0, 0, 0.1);
+  --work-cardShadowDark: rgba(204, 204, 204, 0.5);
+  /* + SKILLS */
+  --skills-yearColorLight: #6abc61;
+  --skills-yearColor: #6abc61;
+  --skills-yearColorDark: #f2f480;
+  --skills-badgeBgColorLight: #cccccc;
+  --skills-badgeBgColor: #cccccc;
+  --skills-badgeBgColorDark: #fef4f5;
+  --skills-badgeShadowLight: #95656e85;
+  --skills-badgeShadow: #95656e85;
+  --skills-badgeShadowDark: #fef4f5;
+  --skills-tooltipTextColorLight: #000;
+  --skills-tooltipTextColor: #000;
+  --skills-tooltipTextColorDark: #6b7688;
+  --skills-tooltipBgColorLight: #cccccc;
+  --skills-tooltipBgColor: #cccccc;
+  --skills-tooltipBgColorDark: #fff;
+  --skills-tooltipArrowColorLight: #cccccc;
+  --skills-tooltipArrowColor: #cccccc;
+  --skills-tooltipArrowColorDark: #fff;
+  --skills-tooltipShadowLight: rgba(0, 0, 0, 0.1);
+  --skills-tooltipShadow: rgba(0, 0, 0, 0.1);
+  --skills-tooltipShadowDark: rgba(0, 0, 0, 0.1);
+  /* + FOOTER */
+  --form-labelRegularColorLight: #436b37;
+  --form-labelRegularColor: #436b37;
+  --form-labelRegularColorDark: #9a8e2f;
+  --form-labelFocusColorLight: #44922c;
+  --form-labelFocusColor: #44922c;
+  --form-labelFocusColorDark: #cab82f;
+  --form-labelErrorColorLight: #ff0000;
+  --form-labelErrorColor: #ff0000;
+  --form-labelErrorColorDark: #ce1515;
+  --form-inputTextColorLight: #2a4322;
+  --form-inputTextColor: #2a4322;
+  --form-inputTextColorDark: #beaf38;
+  --form-taTextColorLight: #369417;
+  --form-taTextColor: #369417;
+  --form-taTextColorDark: #f8de1f;
+  --form-inputTaShadowLight: 0 0 10px #031d3d;
+  --form-inputTaShadow: 0 0 10px #031d3d;
+  --form-inputTaShadowDark: 0 0 10px #8ab8b5;
+  --form-inputTaRegularBorderColorLight: #2b5c54;
+  --form-inputTaRegularBorderColor: #2b5c54;
+  --form-inputTaRegularBorderColorDark: #945a12;
+  --form-inputTaFocusBorderColorLight: #056ff2;
+  --form-inputTaFocusBorderColor: #056ff2;
+  --form-inputTaFocusBorderColorDark: #9a299a;
+  --form-inputTaErrorBorderColorLight: #ff6f00;
+  --form-inputTaErrorBorderColor: #ff6f00;
+  --form-inputTaErrorBorderColorDark: #ef1010;
+  --form-inputTaHoverBorderColorLight: #29bde6;
+  --form-inputTaHoverBorderColor: #29bde6;
+  --form-inputTaHoverBorderColorDark: #67c76c;
+  --form-inputTaHelperTextColorLight: #ff0000;
+  --form-inputTaHelperTextColor: #ff0000;
+  --form-inputTaHelperTextColorDark: #ce1515;
+  --form-submitButtonBgColorLight: #cccccc;
+  --form-submitButtonBgColor: #cccccc;
+  --form-submitButtonBgColorDark: #b8b9c9;
+  --form-submitButtonTextColorLight: #093401;
+  --form-submitButtonTextColor: #093401;
+  --form-submitButtonTextColorDark: #383b01;
+  --form-submitButtonHoverColorLight: #29bde6;
+  --form-submitButtonHoverColor: #29bde6;
+  --form-submitButtonHoverColorDark: #67c76c;
+  --footer-emailCardBgColorLight: #afaeae;
+  --footer-emailCardBgColor: #afaeae;
+  --footer-emailCardBgColorDark: #79875fa2;
+  --footer-emailCardShadowLight: #2b939c;
+  --footer-emailCardShadow: #2b939c;
+  --footer-emailCardShadowDark: #cbcaca;
+  --footer-phoneCardBgColorLight: #d2d1d1;
+  --footer-phoneCardBgColor: #d2d1d1;
+  --footer-phoneCardBgColorDark: #5f8776a2;
+  --footer-phoneCardShadowLight: #21684f;
+  --footer-phoneCardShadow: #21684f;
+  --footer-phoneCardShadowDark: #856868;
+  /* + BUTTONS */
+  --btn-textColorLight: #fff;
+  --btn-textColor: #fff;
+  --btn-textColorDark: #000;
+  --btn-successBgColorLight: #047857;
+  --btn-successBgColor: #047857;
+  --btn-successBgColorDark: #b4fde8;
+  --btn-generalBgColorLight: #444;
+  --btn-generalBgColor: #444;
+  --btn-generalBgColorDark: #aaa;
+  --btn-activeBgColorLight: #313bac;
+  --btn-activeBgColor: #313bac;
+  --btn-activeBgColorDark: #8689b4;
+  /* + NAVIGATION DOTS */
+  --navDot-BgColorLight: #313bac;
+  --navDot-BgColor: #313bac;
+  --navDot-BgColorDark: red;
+  /* + PAGINATION */
+  --pagination-textColorLight: #000;
+  --pagination-textColor: #000;
+  --pagination-textColorDark: #fff;
+  --pagination-rowsTextColorLight: #434343;
+  --pagination-rowsTextColor: #434343;
+  --pagination-rowsTextColorDark: #a7b72a;
+  --pagination-buttonBgHoverColorLight: #7e7e7e38;
+  --pagination-buttonBgHoverColor: #7e7e7e38;
+  --pagination-buttonBgHoverColorDark: #ffffff91;
+  /* + SOCIAL */
+  --social-bgHoverColorLight: #313bac;
+  --social-bgHoverColor: #313bac;
+  --social-bgHoverColorDark: #b72a2a;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Önceki Firefox sürümleri için */
+}
+
+body {
+  min-height: 100vh;
+  /* font-family: "Fira Code", "Inconsolata", monospace, "Roboto", sans-serif; */
+  /* color: #fff; */
+  /* background-color: #444; */
+}
+
+@media (min-width: 2000px) {
+  :root {
+    --navbar-logo-width: 5rem;
+  }
+}
